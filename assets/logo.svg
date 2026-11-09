@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb"/><stop offset="1" stop-color="#1baf7a"/></linearGradient></defs>
+  <rect width="256" height="256" rx="58" fill="url(#g)"/>
+  <!-- sound waves -->
+  <g fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" opacity=".9">
+    <path d="M44 104v48"/><path d="M212 104v48"/>
+  </g>
+  <!-- ear -->
+  <path d="M98 108c0-28 18-46 40-46s40 18 40 44c0 22-12 30-22 40s-8 34-30 34c-14 0-22-8-24-18" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M120 112c0-12 8-20 18-20s18 8 18 18c0 10-8 14-14 18" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+</svg>
