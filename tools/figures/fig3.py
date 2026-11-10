@@ -55,7 +55,7 @@ t(1268,560,"backprop",15,italic=True,fill="#a15c07",anchor="end")
 R(1300,125,660,840,PU,PUs,2,20); t(1630,165,"(c) Inference on device",23,500,"#6b3fb0",fam=SAN)
 t(1630,195,"ONNX Runtime · CPU · offline",17,italic=True,fill="#374151")
 cx=1500
-box(cx-150,225,300,50,GY,GYs,"Audio chunk ≤ 20 s",size=18)
+box(cx-150,225,300,50,GY,GYs,"Audio chunk ≤ 10 s",size=18)
 A([(cx,277),(cx,300)])
 box(cx-150,304,300,56,BT,BTs,"Encoder (runs once)",size=18)
 A([(cx,362),(cx,385)])

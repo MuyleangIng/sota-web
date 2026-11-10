@@ -522,7 +522,7 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
     <div class="card"><div class="stats">
       <div class="stat"><b class="muted">soon</b><span>Qwen3-ASR-0.6B-Khmer CER</span></div>
       <div class="stat"><b class="muted">soon</b><span>Whisper-small-khmer CER</span></div>
-      <div class="stat"><b>1,100 h</b><span>Khmer speech for training</span></div>
+      <div class="stat"><b>≈240 h</b><span>real Khmer speech (+ ≈770 h made by VoxPocket)</span></div>
       <div class="stat"><b class="muted">soon</b><span>Sota</span></div>
     </div></div>
     <div class="grid g3" style="margin-top:18px">
@@ -543,15 +543,16 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
       <div class="card">
         <h3>Training</h3>
         <table class="cmp data">
-          <tr><td><b>Khmer speech, ~1,100 hours</b><small>resampled to 16 kHz mono, text normalized (Unicode NFC), split by speaker</small></td><td>checking</td></tr>
-          <tr><td><b>Augmentation</b><small>SpecAugment masks, speed 0.9 / 1.0 / 1.1, added background noise</small></td><td>own</td></tr>
+          <tr><td><b>Real Khmer speech, ≈240 hours</b><small>people recorded reading and talking; 16 kHz mono, text normalized, split by speaker; dev and test come only from here</small></td><td>checking</td></tr>
+          <tr><td><b>Synthetic speech, ≈770 hours</b><small>made by VoxPocket TTS: many voices, styles and Khmer–English sentences; at most half of each epoch</small></td><td>own</td></tr>
+          <tr><td><b>Augmentation</b><small>SpecAugment masks, speed 0.9 / 1.0 / 1.1, background noise, room echo, phone-call audio</small></td><td>own</td></tr>
           <tr><td><b>Khmer text for the decoder</b><small>the same sentences Chakkhu learns from</small></td><td>own</td></tr>
         </table>
       </div>
       <div class="card">
         <h3>Testing (never trained on)</h3>
         <table class="cmp data">
-          <tr><td><b>Held-out speakers</b><small>from the 1,100 h, never seen in training</small></td><td>own</td></tr>
+          <tr><td><b>Held-out speakers</b><small>from the real speech, never seen in training (not even as cloned voices)</small></td><td>own</td></tr>
           <tr><td><b>Real-life clips</b><small>phone calls, street noise, Khmer + English (to collect)</small></td><td>own</td></tr>
           <tr><td><b>khmer-asr-compare-eval</b><small>287 Khmer and code-switched clips on Hugging Face (gated)</small></td><td>checking</td></tr>
         </table>
@@ -568,7 +569,7 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
     <div class="road">
       <div class="rstep done"><span class="status st-ok">Done</span><h3>Name &amp; design</h3><p>Sota <span class="km">សោតៈ</span>, the ≈26M hybrid design and three architecture figures.</p></div>
       <div class="rstep done"><span class="status st-ok">Done</span><h3>Cluster tokenizer</h3><p>3,402 Khmer cluster tokens, shared with Chakkhu.</p></div>
-      <div class="rstep now"><span class="status st-test">Next</span><h3>Prepare the audio</h3><p>1,100 h: resample, normalize text, split by speaker, licenses checked.</p></div>
+      <div class="rstep now"><span class="status st-test">Next</span><h3>Prepare the audio</h3><p>≈1,010 h (≈240 h real): resample, clean text, split by speaker, remove leaks, licenses checked.</p></div>
       <div class="rstep"><span class="status st-soon">Soon</span><h3>Baseline report</h3><p>Qwen3-ASR-Khmer and Whisper-small-khmer scored on the same clips.</p></div>
       <div class="rstep"><span class="status st-soon">Soon</span><h3>Train Sota</h3><p>Decoder learns Khmer text first, then a small test run, then the full run.</p></div>
       <div class="rstep"><span class="status st-soon">Soon</span><h3>Test &amp; release</h3><p>Released only if it reaches the bar: model on Hugging Face, web demo.</p></div>
