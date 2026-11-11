@@ -317,6 +317,15 @@ table.cmp td{padding:10px 8px;border-top:1px solid var(--line);vertical-align:to
 table.cmp td small{display:block;color:var(--muted);font-size:13px}
 table.cmp td:last-child{text-align:right;white-space:nowrap}
 table.cmp.data td:last-child{color:var(--ink2);font-size:13px;font-weight:600}
+pre.code{background:#0b1020;color:#e2e8f0;border-radius:14px;padding:16px 18px;overflow:auto;font-size:13.5px;line-height:1.55;margin:0;border:1px solid var(--line)}
+.cite{position:relative}
+.cite button{position:absolute;top:10px;right:10px}
+.credits{margin-top:28px}
+.credits h3{margin:0 0 4px}
+.credits table.cmp td:last-child{white-space:normal;min-width:88px}
+details.bibs{margin-top:18px}
+details.bibs summary{cursor:pointer;color:var(--blue);font-weight:600;font-size:15px}
+details.bibs .cite{margin-top:12px}
 table.cmp tr.pick td{background:color-mix(in srgb,var(--green) 9%,transparent)}
 
 /* chart */
@@ -420,6 +429,7 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
 <symbol id="i-flag" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" /> <line x1="4" x2="4" y1="22" y2="15" /></symbol>
 <symbol id="i-arrow-left-right" viewBox="0 0 24 24"><path d="M8 3 4 7l4 4" /> <path d="M4 7h16" /> <path d="m16 21 4-4-4-4" /> <path d="M20 17H4" /></symbol>
 <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></symbol>
+<symbol id="i-quote" viewBox="0 0 24 24"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></symbol>
 <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
 <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></symbol>
 <symbol id="i-audio" viewBox="0 0 24 24"><path d="M2 10v3"/><path d="M6 6v11"/><path d="M10 3v18"/><path d="M14 8v7"/><path d="M18 5v13"/><path d="M22 10v3"/></symbol>
@@ -438,6 +448,7 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
       <a href="#report"><svg class="ic" aria-hidden="true"><use href="#i-gauge"/></svg><span>Benchmark</span></a>
       <a href="#data"><svg class="ic" aria-hidden="true"><use href="#i-database"/></svg><span class="lbl-x">Data</span></a>
       <a href="#roadmap"><svg class="ic" aria-hidden="true"><use href="#i-flag"/></svg><span>Roadmap</span></a>
+      <a href="#cite"><svg class="ic" aria-hidden="true"><use href="#i-quote"/></svg><span class="lbl-x">Citation</span></a>
       <a href="https://muyleanging.github.io/chakkhu-web/" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-scan-eye"/></svg><span class="lbl-x">Chakkhu</span></a>
     </div>
     <button id="theme" class="iconbtn" title="Light / dark" aria-label="Switch light or dark mode"><svg class="ic" aria-hidden="true"><use href="#i-sun-moon"/></svg></button>
@@ -453,6 +464,7 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
   <a href="#report"><svg class="ic" aria-hidden="true"><use href="#i-gauge"/></svg>First results</a>
   <a href="#data"><svg class="ic" aria-hidden="true"><use href="#i-database"/></svg>Data</a>
   <a href="#roadmap"><svg class="ic" aria-hidden="true"><use href="#i-flag"/></svg>Roadmap</a>
+  <a href="#cite"><svg class="ic" aria-hidden="true"><use href="#i-quote"/></svg>Citation &amp; data credits</a>
   <div class="grp">Online</div>
   <a href="https://muyleanging.github.io/chakkhu-web/" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-scan-eye"/></svg>Chakkhu OCR<svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
   <a href="https://muyleanging.github.io/akkhara-web/" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-keyboard"/></svg>Akkhara keyboard<svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
@@ -638,8 +650,8 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
       <div class="card">
         <h3>Training</h3>
         <table class="cmp data">
-          <tr><td><b>Real Khmer speech, ≈237 hours</b><small>people recorded reading and talking; 16 kHz mono, text normalized, split by speaker; dev and test come only from here</small></td><td>checking</td></tr>
-          <tr><td><b>Synthetic speech, ≈610 hours</b><small>made by VoxPocket TTS: many voices, styles and Khmer–English sentences; at most half of each epoch</small></td><td>own</td></tr>
+          <tr><td><b>Real Khmer speech, ≈237 hours</b><small><a href="#cite">NXKMER TTS 450</a> (38 speakers) and <a href="#cite">OpenSLR 42</a> (Google); 16 kHz mono, text normalized, split by speaker; dev and test come only from here</small></td><td>CC BY / BY-SA</td></tr>
+          <tr><td><b>Synthetic speech, ≈610 hours</b><small>made by VoxPocket TTS (VoxCPM2): designed voices and voices cloned from <a href="#cite">open Khmer speech sets</a>, styles and Khmer–English sentences; at most half of each epoch</small></td><td>own</td></tr>
           <tr><td><b>Augmentation</b><small>SpecAugment masks, speed 0.9 / 1.0 / 1.1, background noise, room echo, phone-call audio</small></td><td>own</td></tr>
           <tr><td><b>Khmer text for the decoder</b><small>the same sentences Chakkhu learns from</small></td><td>own</td></tr>
         </table>
@@ -679,6 +691,90 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
   </div>
 </section>
 
+<section id="cite">
+  <div class="wrap">
+    <div class="eyebrow">Citation</div>
+    <h2>Using Sota? Please cite it</h2>
+    <div class="cite"><button class="btn btn-ghost btn-sm" type="button" data-copy="bib"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copy</button><pre class="code" id="bib">@misc{ing2026sota,
+  author    = {Ing, Muyleang},
+  title     = {Sota: A Small Khmer Speech Recognition Model Trained from Scratch},
+  year      = {2026},
+  publisher = {Hugging Face},
+  url       = {https://huggingface.co/muyleanging/Sota-ASR-Khmer}
+}</pre></div>
+    <p class="meta" style="margin-top:10px">Sota learned from the speech sets below; please credit them too. Its synthetic speech was made with VoxPocket, built on VoxCPM (OpenBMB). Model license: preview (personal, evaluation and research use); the final license comes with the full release.</p>
+
+    <div class="card credits">
+      <h3>Data and voices Sota learned from</h3>
+      <p class="meta" style="margin:0 0 10px">Real speech was used for training and for the dev/test sets. The other sets were used only as reference voices for VoxPocket to clone; their recordings were not trained on directly.</p>
+      <table class="cmp data">
+        <tr><th>Set</th><th>License</th></tr>
+        <tr><td><b><a href="https://huggingface.co/datasets/NTQAI/nxkmer-tts-450" target="_blank" rel="noopener">NXKMER TTS 450</a></b><small>NTQAI · real speech, 38 speakers · ≈212 h train, plus all dev and most test clips</small></td><td>CC BY 4.0</td></tr>
+        <tr><td><b><a href="https://www.openslr.org/42/" target="_blank" rel="noopener">OpenSLR 42 · High quality TTS data for Khmer</a></b><small>Google · real speech · Sodimana et al., SLTU 2018</small></td><td>CC BY-SA 4.0</td></tr>
+        <tr><td><b><a href="https://huggingface.co/muyleanging/VoxPocket-TTS-Khmer" target="_blank" rel="noopener">VoxPocket</a> + <a href="https://huggingface.co/openbmb/VoxCPM2" target="_blank" rel="noopener">VoxCPM2</a></b><small>made the ≈610 h of synthetic speech · VoxCPM by OpenBMB</small></td><td>Apache-2.0</td></tr>
+        <tr><td><b><a href="https://huggingface.co/datasets/google/fleurs" target="_blank" rel="noopener">FLEURS</a></b><small>Google · reference voices · Conneau et al., 2022</small></td><td>CC BY 4.0</td></tr>
+        <tr><td><b><a href="https://huggingface.co/datasets/seanghay/km-speech-corpus" target="_blank" rel="noopener">Khmer Speech Corpus</a></b><small>seanghay · reference voices</small></td><td>CC BY 4.0</td></tr>
+        <tr><td><b><a href="https://huggingface.co/datasets/sengtha/iany-khmer-voice" target="_blank" rel="noopener">iAny Khmer Voice</a></b><small>sengtha / iAny community · reference voices</small></td><td>CC BY-SA 4.0</td></tr>
+        <tr><td><b><a href="https://huggingface.co/datasets/Digital-Divide-Data/khmer-speech-dataset" target="_blank" rel="noopener">Cultural Khmer ASR Dataset</a></b><small>Digital Divide Data · reference voices</small></td><td>CC BY-SA 4.0</td></tr>
+        <tr><td><b><a href="https://huggingface.co/datasets/espnet/yodas2" target="_blank" rel="noopener">YODAS2</a></b><small>ESPnet · reference voices · Li et al., ASRU 2023</small></td><td>CC BY 3.0</td></tr>
+        <tr><td><b><a href="https://huggingface.co/datasets/rinabuoy/khm-asr-open" target="_blank" rel="noopener">khm-asr-open</a></b><small>rinabuoy · reference voices</small></td><td>not stated</td></tr>
+        <tr><td><b><a href="https://huggingface.co/datasets/seanghay/khmer_grkpp_speech" target="_blank" rel="noopener">Khmer Speech of Phnom Penh Gendarmerie</a></b><small>seanghay · reference voices · published for research only</small></td><td>research only</td></tr>
+      </table>
+      <p class="meta" style="margin:12px 0 0">Compared against, not trained on: <a href="https://huggingface.co/seanghay/Qwen3-ASR-0.6B-Khmer" target="_blank" rel="noopener">Qwen3-ASR-0.6B-Khmer</a> and <a href="https://huggingface.co/seanghay/whisper-small-khmer-v2" target="_blank" rel="noopener">whisper-small-khmer-v2</a> (seanghay). Text normalization (khnormal) and the 3,402 cluster tokens are shared with <a href="https://muyleanging.github.io/chakkhu-web/" target="_blank" rel="noopener">Chakkhu</a>.</p>
+      <details class="bibs">
+        <summary>BibTeX for these sources</summary>
+        <div class="cite"><button class="btn btn-ghost btn-sm" type="button" data-copy="bib2"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copy</button><pre class="code" id="bib2">@misc{ntqai2026nxkmer,
+  author    = {NTQAI},
+  title     = {NXKMER TTS 450},
+  year      = {2026},
+  publisher = {Hugging Face},
+  url       = {https://huggingface.co/datasets/NTQAI/nxkmer-tts-450}
+}
+
+@inproceedings{kjartansson-etal-tts-sltu2018,
+  title     = {{A Step-by-Step Process for Building TTS Voices Using Open Source Data and Framework for Bangla, Javanese, Khmer, Nepali, Sinhala, and Sundanese}},
+  author    = {Keshan Sodimana and Knot Pipatsrisawat and Linne Ha and Martin Jansche and Oddur Kjartansson and Pasindu De Silva and Supheakmungkol Sarin},
+  booktitle = {Proc. The 6th Intl. Workshop on Spoken Language Technologies for Under-Resourced Languages (SLTU)},
+  year      = {2018},
+  address   = {Gurugram, India},
+  pages     = {66--70},
+  url       = {http://dx.doi.org/10.21437/SLTU.2018-14}
+}
+
+@misc{ing2026voxpocket,
+  author    = {Ing, Muyleang},
+  title     = {VoxPocket: A Small Khmer Text-to-Speech Model with Voice Cloning and Styles},
+  year      = {2026},
+  publisher = {Hugging Face},
+  url       = {https://huggingface.co/muyleanging/VoxPocket-TTS-Khmer}
+}
+
+@article{voxcpm2025,
+  title   = {VoxCPM: Tokenizer-Free TTS for Context-Aware Speech Generation and True-to-Life Voice Cloning},
+  author  = {Zhou, Yixuan and Zeng, Guoyang and Liu, Xin and Li, Xiang and Yu, Renjie and Wang, Ziyang and Ye, Runchuan and Sun, Weiyue and Gui, Jiancheng and Li, Kehan and Wu, Zhiyong and Liu, Zhiyuan},
+  journal = {arXiv preprint arXiv:2509.24650},
+  year    = {2025}
+}
+
+@article{fleurs2022arxiv,
+  title   = {FLEURS: Few-shot Learning Evaluation of Universal Representations of Speech},
+  author  = {Conneau, Alexis and Ma, Min and Khanuja, Simran and Zhang, Yu and Axelrod, Vera and Dalmia, Siddharth and Riesa, Jason and Rivera, Clara and Bapna, Ankur},
+  journal = {arXiv preprint arXiv:2205.12446},
+  year    = {2022}
+}
+
+@inproceedings{li2023yodas,
+  title     = {Yodas: Youtube-Oriented Dataset for Audio and Speech},
+  author    = {Li, Xinjian and Takamichi, Shinnosuke and Saeki, Takaaki and Chen, William and Shiota, Sayaka and Watanabe, Shinji},
+  booktitle = {2023 IEEE Automatic Speech Recognition and Understanding Workshop (ASRU)},
+  pages     = {1--8},
+  year      = {2023}
+}</pre></div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div>© 2026 Ing Muyleang · Sota <span class="km">សោតៈ</span></div>
@@ -690,6 +786,11 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
 <button id="toTop" class="glass" aria-label="Back to top"><svg class="ic" aria-hidden="true"><use href="#i-arrow-up"/></svg></button>
 
 <script>
+// ---- copy citation ---------------------------------------------------------------------------
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText(document.getElementById(b.dataset.copy).textContent);}catch(_){}
+  const t=b.innerHTML; b.textContent='Copied ✓'; setTimeout(()=>b.innerHTML=t,1800);
+}));
 // ---- phone menu, back to top, active link (same as the Akkhara site) -------------------------
 (function(){
   const btn=document.getElementById('menuBtn2'), menu=document.getElementById('mobileMenu');
