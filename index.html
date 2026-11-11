@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sota · Khmer speech recognition</title>
-<meta name="description" content="Sota (សោតៈ, ear) is a small Khmer + English speech recognition model by Ing Muyleang: try it in your browser, first benchmark results, architecture, data and roadmap.">
+<meta name="description" content="Sota (សោតៈ, ear) is a small Khmer + English speech recognition model by Ing Muyleang: in development: online demo, first benchmark results, architecture, data and roadmap.">
 <meta property="og:title" content="Sota · Khmer speech recognition">
 <meta property="og:description" content="A small model that turns Khmer and English speech into text, offline on your phone. Early test model: try it live.">
 <meta property="og:image" content="assets/logo.png">
@@ -101,17 +101,10 @@ h1 .km{background:linear-gradient(90deg,var(--blue),var(--green));-webkit-backgr
 
 /* live demo */
 .tryc{max-width:820px}
-.tryrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.tryrow label.btn input{display:none}
-.tog{display:inline-flex;gap:8px;align-items:center;font-size:14px;color:var(--ink2);margin-left:auto;cursor:pointer}
-.btn.rec{background:#dc2626;box-shadow:0 6px 18px rgba(220,38,38,.35)}
-.tryout{margin-top:14px;padding:14px 16px;border-radius:12px;background:var(--bg2);font-size:22px;line-height:1.75;min-height:96px;white-space:pre-wrap;word-break:break-word}
-.tryout:empty::before{content:attr(data-empty);color:var(--muted);font-size:15px;font-family:Inter,sans-serif}
-.trymeta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:10px;font-size:13px;color:var(--muted)}
-.trymeta .btn{margin-left:auto}
+.devnote{border-left:4px solid #d97706}
+.devnote h3{margin-top:0}
 .bar{height:4px;border-radius:4px;background:var(--line);overflow:hidden;margin-top:10px;display:none}
 .bar i{display:block;height:100%;width:0;background:var(--blue);transition:width .2s}
-@media (max-width:600px){.tog{margin-left:0}.tryrow .btn{flex:1;justify-content:center}}
 
 /* benchmark comparison */
 .bench{margin-top:18px}
@@ -458,7 +451,7 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
 <div id="mobileMenu" class="glass" role="menu">
   <div class="grp">On this page</div>
   <a href="#top"><svg class="ic" aria-hidden="true"><use href="#i-house"/></svg>Home</a>
-  <a href="#try"><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg>Try Sota live</a>
+  <a href="#try"><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg>Try Sota</a>
   <a href="#why"><svg class="ic" aria-hidden="true"><use href="#i-languages"/></svg>Why Khmer speech is hard</a>
   <a href="#architecture"><svg class="ic" aria-hidden="true"><use href="#i-cpu"/></svg>Architecture<small>3 figures</small></a>
   <a href="#report"><svg class="ic" aria-hidden="true"><use href="#i-gauge"/></svg>First results</a>
@@ -485,12 +478,12 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
 <header class="hero" id="top">
   <div class="wrap">
     <div>
-      <span class="pill">● Early test model · try it live</span>
+      <span class="pill">● In development · first test model</span>
       <h1>Speak Khmer.<br>Get the <span class="km">អក្សរ</span>.</h1>
       <p class="lead">Sota (<span class="km">សោតៈ</span>, "ear") turns Khmer and English speech into text you can copy:
         voice notes, meetings, lectures and phone calls. Small enough to run on your phone, without internet, so your voice never leaves the device.</p>
       <div class="cta">
-        <a class="btn btn-primary" href="#try"><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg>Try it live</a>
+        <a class="btn btn-primary" href="https://huggingface.co/spaces/muyleanging/Sota-ASR-Demo" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg>Try the demo</a>
         <a class="btn btn-ghost hide-sm" href="#architecture"><svg class="ic" aria-hidden="true"><use href="#i-cpu"/></svg>See the model</a>
         <a class="btn btn-ghost" href="#report"><svg class="ic" aria-hidden="true"><use href="#i-gauge"/></svg>Results</a>
       </div>
@@ -506,7 +499,7 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
       <div class="wave" id="wave"><div class="scan" aria-hidden="true"></div></div>
       <div class="demo-label" style="margin-top:16px">Sota writes</div>
       <div class="out km" id="asrOut"></div>
-      <div class="hint">Preview animation. <a href="#try">Try the real model below</a></div>
+      <div class="hint">Preview animation. <a href="https://huggingface.co/spaces/muyleanging/Sota-ASR-Demo" target="_blank" rel="noopener">Try the real model</a></div>
     </div>
   </div>
 </header>
@@ -514,22 +507,17 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
 <section id="try">
   <div class="wrap">
     <div class="eyebrow">Try it</div>
-    <h2>Talk to Sota in your browser</h2>
-    <p class="sub">Record yourself or upload an audio file. The model (≈33 MB, downloaded once) runs on your own device, so your voice is never uploaded. Early test model: best on clear Khmer speech.</p>
-    <div class="card tryc">
-      <div class="tryrow">
-        <button id="recBtn" class="btn btn-primary" type="button"><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg><span>Record</span></button>
-        <label class="btn btn-ghost" for="fileIn"><svg class="ic" aria-hidden="true"><use href="#i-upload"/></svg>Upload audio<input id="fileIn" type="file" accept="audio/*,.wav,.mp3,.m4a,.flac,.ogg,.webm"></label>
-        <label class="tog"><input id="beamChk" type="checkbox" checked>Best accuracy (slower)</label>
+    <h2>Try Sota on the demo page</h2>
+    <p class="sub">Record yourself or upload an audio file on the Hugging Face demo. It opens in a new tab.</p>
+    <div class="card tryc devnote">
+      <h3>Still in development</h3>
+      <p>This is Sota's <b>first training run</b>. It is a small model (≈26M parameters), trained mostly on clean, read Khmer speech.
+        It works best on clear speech from one speaker. Noisy audio, phone calls and Khmer–English mixed speech are not trained or tested yet, so expect more mistakes there.
+        The next version adds more real speech, noise and English.</p>
+      <div class="cta" style="margin-top:14px">
+        <a class="btn btn-primary" href="https://huggingface.co/spaces/muyleanging/Sota-ASR-Demo" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg>Open the demo<svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
+        <a class="btn btn-ghost" href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Model on Hugging Face</a>
       </div>
-      <div class="bar" id="tryBar"><i></i></div>
-      <div class="tryout km" id="tryOut" aria-live="polite" data-empty="Sota's text will appear here."></div>
-      <div class="trymeta"><span id="tryStatus">The model loads the first time you use it.</span>
-        <button id="copyBtn" class="btn btn-ghost btn-sm" type="button" hidden><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copy</button></div>
-    </div>
-    <div class="cta links" style="margin-top:16px">
-      <a class="btn btn-ghost btn-sm" href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Model on Hugging Face</a>
-      <a class="btn btn-ghost btn-sm" href="https://huggingface.co/spaces/muyleanging/Sota-ASR-Demo" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg>Space demo</a>
     </div>
   </div>
 </section>
@@ -630,7 +618,7 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
       Whisper-small-khmer was trained on OpenSLR42, which is part of this test set. Phone calls, noise and Khmer–English mixing are not tested yet.</p>
     <div class="cta links" style="margin-top:14px">
       <a class="btn btn-primary btn-sm" href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Model card &amp; downloads</a>
-      <a class="btn btn-ghost btn-sm" href="#try"><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg>Try it live</a>
+      <a class="btn btn-ghost btn-sm" href="https://huggingface.co/spaces/muyleanging/Sota-ASR-Demo" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg>Try the demo</a>
     </div>
     <div class="grid g3" style="margin-top:18px">
       <div class="card"><h3>What we compare</h3><p><a href="https://huggingface.co/seanghay/Qwen3-ASR-0.6B-Khmer" target="_blank" rel="noopener">Qwen3-ASR-0.6B-Khmer</a> and
@@ -679,7 +667,7 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
       <div class="rstep done"><span class="status st-ok">Done</span><h3>Prepare the audio</h3><p>≈850 h (≈237 h real): resampled, text cleaned, split by speaker, cloned voices and repeated sentences removed.</p></div>
       <div class="rstep done"><span class="status st-ok">Done</span><h3>Baseline report</h3><p>Qwen3-ASR-Khmer 13.2% and Whisper-small-khmer 18.6% CER on the same 12 h test set.</p></div>
       <div class="rstep done"><span class="status st-ok">Done</span><h3>Train Sota</h3><p>Decoder learned Khmer text first, then a small test run, then the full run: 100k steps on one GPU. Test CER 3.4%.</p></div>
-      <div class="rstep now"><span class="status st-test">Now</span><h3>Test &amp; release</h3><p>Early test: <a href="#try">web demo</a>, <a href="https://huggingface.co/spaces/muyleanging/Sota-ASR-Demo" target="_blank" rel="noopener">Space</a> and <a href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX" target="_blank" rel="noopener">model</a> are live. Next: phone, noise and Khmer–English tests.</p></div>
+      <div class="rstep now"><span class="status st-test">Now</span><h3>Test &amp; release</h3><p>Early test: <a href="https://huggingface.co/spaces/muyleanging/Sota-ASR-Demo" target="_blank" rel="noopener">Space</a> and <a href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX" target="_blank" rel="noopener">model</a> are live. Next: phone, noise and Khmer–English tests.</p></div>
       <div class="rstep"><span class="status st-soon">Later</span><h3>In the apps</h3><p>Voice typing in the Akkhara keyboard, on phone and computer, offline.</p></div>
     </div>
     <div class="family">
@@ -852,209 +840,6 @@ document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',a
       await sleep(2000);
     }
   })();
-})();
-</script>
-<script>
-/* Live demo: Sota runs in the browser with ONNX Runtime Web. Audio never leaves the device. */
-(() => {
-  const ORT = 'https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/';
-  const MODEL = 'model/';
-  const BLANK = 4, BOS = 1, EOS = 2, NSPECIAL = 5;
-  const $ = id => document.getElementById(id);
-  const out = $('tryOut'), status = $('tryStatus'), bar = $('tryBar'), recBtn = $('recBtn'), copyBtn = $('copyBtn');
-  const M = { enc: null, dec: null, vocab: null };
-  let busy = false;
-
-  const say = t => { status.textContent = t; };
-  const progress = f => { bar.style.display = f == null ? 'none' : 'block'; bar.firstElementChild.style.width = Math.round(100 * (f || 0)) + '%'; };
-
-  function loadScript(src) {
-    return new Promise((ok, bad) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = bad; document.head.appendChild(s); });
-  }
-  async function fetchBytes(url, label, done, total) {
-    const r = await fetch(url);
-    if (!r.ok) throw new Error(url + ': ' + r.status);
-    const size = +r.headers.get('content-length') || 0, reader = r.body.getReader(), parts = [];
-    let got = 0;
-    for (;;) {
-      const { done: end, value } = await reader.read();
-      if (end) break;
-      parts.push(value); got += value.length;
-      if (size) { progress((done + got) / total); say(`Downloading ${label}: ${((done + got) / 1e6).toFixed(0)} of ${(total / 1e6).toFixed(0)} MB (only the first time)`); }
-    }
-    const buf = new Uint8Array(got); let o = 0;
-    for (const p of parts) { buf.set(p, o); o += p.length; }
-    return buf;
-  }
-  async function ensureModel(needDec) {
-    if (!window.ort) {
-      say('Loading ONNX Runtime…');
-      await loadScript(ORT + 'ort.min.js');
-      ort.env.wasm.wasmPaths = ORT;
-      ort.env.wasm.numThreads = self.crossOriginIsolated ? Math.min(4, navigator.hardwareConcurrency || 1) : 1;
-    }
-    if (!M.vocab) M.vocab = await (await fetch(MODEL + 'tokens.json')).json();
-    const opt = { executionProviders: ['wasm'], graphOptimizationLevel: 'all' };
-    const total = (M.enc ? 0 : 25.0e6) + (needDec && !M.dec ? 8.2e6 : 0);
-    let done = 0;
-    if (!M.enc) { const b = await fetchBytes(MODEL + 'encoder.int8.onnx', 'Sota model', done, total); done += b.length; say('Starting the model…'); M.enc = await ort.InferenceSession.create(b, opt); }
-    if (needDec && !M.dec) { const b = await fetchBytes(MODEL + 'decoder.int8.onnx', 'Sota model', done, total); M.dec = await ort.InferenceSession.create(b, opt); }
-    progress(null);
-  }
-
-  /* any audio file / recording → 16 kHz mono Float32Array */
-  async function toMono16k(arrayBuf) {
-    const Ctx = window.AudioContext || window.webkitAudioContext, ac = new Ctx();
-    const buf = await ac.decodeAudioData(arrayBuf);
-    ac.close && ac.close();
-    const off = new OfflineAudioContext(1, Math.max(1, Math.ceil(buf.duration * 16000)), 16000);
-    const src = off.createBufferSource(); src.buffer = buf; src.connect(off.destination); src.start();
-    return (await off.startRendering()).getChannelData(0);
-  }
-
-  /* long audio → pieces of at most 15 s, cut at the quietest 0.1 s between 8 s and 15 s */
-  function split(wav) {
-    const SR = 16000, MAX = 15 * SR, MIN = 8 * SR, W = SR / 10, parts = [];
-    let s = 0;
-    while (wav.length - s > MAX) {
-      let best = s + MAX, low = Infinity;
-      for (let a = s + MIN; a + W <= s + MAX; a += W / 2) {
-        let e = 0; for (let i = a; i < a + W; i++) e += wav[i] * wav[i];
-        if (e < low) { low = e; best = a + W / 2; }
-      }
-      parts.push(wav.subarray(s, best)); s = best;
-    }
-    if (wav.length - s > SR / 10) parts.push(wav.subarray(s));
-    return parts;
-  }
-
-  const lse = (a, b) => a === -Infinity ? b : b === -Infinity ? a : Math.max(a, b) + Math.log1p(Math.exp(-Math.abs(a - b)));
-  function greedy(lp, T, V) {
-    const ids = []; let prev = -1;
-    for (let t = 0; t < T; t++) {
-      let best = 0, bv = -Infinity, o = t * V;
-      for (let v = 0; v < V; v++) if (lp[o + v] > bv) { bv = lp[o + v]; best = v; }
-      if (best !== prev && best !== BLANK) ids.push(best);
-      prev = best;
-    }
-    return ids;
-  }
-  function ctcScore(lp, T, V, seq) {      // log P_CTC(seq | audio)
-    const S = 2 * seq.length + 1, ext = new Int32Array(S);
-    for (let s = 0; s < S; s++) ext[s] = s % 2 ? seq[(s - 1) >> 1] : BLANK;
-    let a = new Float64Array(S).fill(-Infinity);
-    a[0] = lp[BLANK]; if (S > 1) a[1] = lp[ext[1]];
-    for (let t = 1; t < T; t++) {
-      const b = new Float64Array(S), o = t * V;
-      for (let s = 0; s < S; s++) {
-        let v = a[s];
-        if (s > 0) v = lse(v, a[s - 1]);
-        if (s > 1 && ext[s] !== BLANK && ext[s] !== ext[s - 2]) v = lse(v, a[s - 2]);
-        b[s] = v + lp[o + ext[s]];
-      }
-      a = b;
-    }
-    return S > 1 ? lse(a[S - 1], a[S - 2]) : a[0];
-  }
-  /* same algorithm as sota/decode.py: 5 beams, stop when no live beam can win, CTC rescoring, length guards */
-  async function beam(enc, lp, T, V, draft, k = 5, w = 0.3, guard = 1.5) {
-    if (!draft.length) return draft;
-    const [, Te, D] = enc.dims, ed = enc.data;
-    let hyps = [[[BOS], 0]]; const done = [];
-    for (let step = 0, max = Math.floor(guard * draft.length) + 1; step < max; step++) {
-      const n = hyps.length, L = hyps[0][0].length;
-      const toks = new BigInt64Array(n * L), rep = new Float32Array(n * Te * D);
-      hyps.forEach((h, i) => { h[0].forEach((t, j) => { toks[i * L + j] = BigInt(t); }); rep.set(ed, i * Te * D); });
-      const r = await M.dec.run({ tokens: new ort.Tensor('int64', toks, [n, L]), enc: new ort.Tensor('float32', rep, [n, Te, D]) });
-      const o = r.logp.data, Vd = r.logp.dims[1], cand = [];
-      for (let i = 0; i < n; i++) {
-        const top = [];
-        for (let v = 0; v < Vd; v++) {
-          const x = o[i * Vd + v];
-          if (top.length < k || x > top[top.length - 1][1]) { top.push([v, x]); top.sort((p, q) => q[1] - p[1]); if (top.length > k) top.pop(); }
-        }
-        for (const [v, x] of top) cand.push([hyps[i][0].concat(v), hyps[i][1] + x]);
-      }
-      cand.sort((p, q) => q[1] - p[1]);
-      hyps = [];
-      for (const [seq, sc] of cand) {
-        if (seq[seq.length - 1] === EOS) done.push([seq.slice(1, -1), sc]);
-        else if (hyps.length < k) hyps.push([seq, sc]);
-      }
-      if (!hyps.length || (done.length && Math.max(...hyps.map(h => h[1])) < Math.max(...done.map(d => d[1])))) break;
-    }
-    if (!done.length) return draft;
-    let best = null, bs = -Infinity;
-    for (const [seq, sc] of done) { const v = (1 - w) * sc + w * ctcScore(lp, T, V, seq); if (v > bs) { bs = v; best = seq; } }
-    if (best.length > guard * draft.length || best.length * guard < draft.length) return draft;
-    return best;
-  }
-  const decode = ids => ids.filter(i => i >= NSPECIAL && i < M.vocab.length).map(i => M.vocab[i]).join('');
-
-  async function run(arrayBuf) {
-    if (busy) return;
-    busy = true; recBtn.disabled = true; copyBtn.hidden = true; out.textContent = '';
-    try {
-      const useBeam = $('beamChk').checked;
-      await ensureModel(useBeam);
-      say('Reading the audio…');
-      const wav = await toMono16k(arrayBuf), secs = wav.length / 16000;
-      if (secs < 0.3) throw new Error('The audio is too short.');
-      const parts = split(wav), t0 = performance.now(), texts = [];
-      for (let p = 0; p < parts.length; p++) {
-        say(`Listening… ${parts.length > 1 ? `part ${p + 1} of ${parts.length}` : ''}`);
-        progress(p / parts.length);
-        const r = await M.enc.run({ wav: new ort.Tensor('float32', parts[p], [1, parts[p].length]) });
-        const lp = r.ctc_logp.data, [, T, V] = r.ctc_logp.dims;
-        const draft = greedy(lp, T, V);
-        texts.push(decode(useBeam ? await beam(r.enc, lp, T, V, draft) : draft));
-        out.textContent = texts.join('');
-      }
-      progress(null);
-      const took = (performance.now() - t0) / 1000;
-      if (!out.textContent) out.textContent = '…';
-      say(`${secs.toFixed(1)} s of audio, written in ${took.toFixed(1)} s on this device${useBeam ? ' (best accuracy)' : ''}.`);
-      copyBtn.hidden = false;
-    } catch (e) {
-      progress(null);
-      say('Sorry, something went wrong: ' + (e && e.message ? e.message : e));
-    } finally {
-      busy = false; recBtn.disabled = false;
-    }
-  }
-
-  $('fileIn').addEventListener('change', async e => {
-    const f = e.target.files[0]; e.target.value = '';
-    if (f) run(await f.arrayBuffer());
-  });
-
-  let rec = null, chunks = [], timer = null;
-  recBtn.addEventListener('click', async () => {
-    if (rec && rec.state === 'recording') { rec.stop(); return; }
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: { channelCount: 1, echoCancellation: true, noiseSuppression: false } });
-      chunks = []; rec = new MediaRecorder(stream);
-      rec.ondataavailable = e => e.data.size && chunks.push(e.data);
-      rec.onstop = async () => {
-        clearInterval(timer); stream.getTracks().forEach(t => t.stop());
-        recBtn.classList.remove('rec'); recBtn.lastElementChild.textContent = 'Record';
-        run(await new Blob(chunks, { type: rec.mimeType }).arrayBuffer());
-      };
-      rec.start();
-      recBtn.classList.add('rec');
-      const t0 = Date.now();
-      const tick = () => { const s = Math.floor((Date.now() - t0) / 1000); recBtn.lastElementChild.textContent = `Stop (${s}s)`; if (s >= 60) rec.stop(); };
-      tick(); timer = setInterval(tick, 250);
-      say('Recording… speak Khmer, then press Stop.');
-      ensureModel($('beamChk').checked).then(() => { if (rec.state === 'recording') say('Recording… speak Khmer, then press Stop.'); }).catch(() => {});
-    } catch (e) {
-      say('Microphone not available: ' + (e && e.message ? e.message : e));
-    }
-  });
-
-  copyBtn.addEventListener('click', async () => {
-    try { await navigator.clipboard.writeText(out.textContent); copyBtn.lastChild.textContent = 'Copied'; setTimeout(() => { copyBtn.lastChild.textContent = 'Copy'; }, 1500); } catch (e) {}
-  });
 })();
 </script>
 <script>
