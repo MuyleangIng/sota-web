@@ -456,8 +456,8 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
   <div class="grp">Online</div>
   <a href="https://muyleanging.github.io/chakkhu-web/" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-scan-eye"/></svg>Chakkhu OCR<svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
   <a href="https://muyleanging.github.io/akkhara-web/" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-keyboard"/></svg>Akkhara keyboard<svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
-  <a href="https://huggingface.co/INGMUYLEANG/sota-khmer-asr" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Sota model<small>download</small><svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
-  <a href="https://huggingface.co/INGMUYLEANG" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Hugging Face<svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
+  <a href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Sota model<small>download</small><svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
+  <a href="https://huggingface.co/muyleanging" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Hugging Face<svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
   <a href="https://github.com/MuyleangIng" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-github"/></svg>GitHub<svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
 </div>
 
@@ -516,8 +516,8 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
         <button id="copyBtn" class="btn btn-ghost btn-sm" type="button" hidden><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copy</button></div>
     </div>
     <div class="cta links" style="margin-top:16px">
-      <a class="btn btn-ghost btn-sm" href="https://huggingface.co/INGMUYLEANG/sota-khmer-asr" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Model on Hugging Face</a>
-      <a class="btn btn-ghost btn-sm" href="https://huggingface.co/spaces/INGMUYLEANG/sota-khmer-asr" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg>Space demo</a>
+      <a class="btn btn-ghost btn-sm" href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Model on Hugging Face</a>
+      <a class="btn btn-ghost btn-sm" href="https://huggingface.co/spaces/muyleanging/Sota-ASR-Demo" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg>Space demo</a>
     </div>
   </div>
 </section>
@@ -617,7 +617,7 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
     <p class="meta" style="margin-top:12px">Fair-play notes: these are clean recordings from the same sources Sota trained on (different speakers), so they favour Sota.
       Whisper-small-khmer was trained on OpenSLR42, which is part of this test set. Phone calls, noise and Khmer–English mixing are not tested yet.</p>
     <div class="cta links" style="margin-top:14px">
-      <a class="btn btn-primary btn-sm" href="https://huggingface.co/INGMUYLEANG/sota-khmer-asr" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Model card &amp; downloads</a>
+      <a class="btn btn-primary btn-sm" href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Model card &amp; downloads</a>
       <a class="btn btn-ghost btn-sm" href="#try"><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg>Try it live</a>
     </div>
     <div class="grid g3" style="margin-top:18px">
@@ -667,7 +667,7 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
       <div class="rstep done"><span class="status st-ok">Done</span><h3>Prepare the audio</h3><p>≈850 h (≈237 h real): resampled, text cleaned, split by speaker, cloned voices and repeated sentences removed.</p></div>
       <div class="rstep done"><span class="status st-ok">Done</span><h3>Baseline report</h3><p>Qwen3-ASR-Khmer 13.2% and Whisper-small-khmer 18.6% CER on the same 12 h test set.</p></div>
       <div class="rstep done"><span class="status st-ok">Done</span><h3>Train Sota</h3><p>Decoder learned Khmer text first, then a small test run, then the full run: 100k steps on one GPU. Test CER 3.4%.</p></div>
-      <div class="rstep now"><span class="status st-test">Now</span><h3>Test &amp; release</h3><p>Early test: <a href="#try">web demo</a>, <a href="https://huggingface.co/spaces/INGMUYLEANG/sota-khmer-asr" target="_blank" rel="noopener">Space</a> and <a href="https://huggingface.co/INGMUYLEANG/sota-khmer-asr" target="_blank" rel="noopener">model</a> are live. Next: phone, noise and Khmer–English tests.</p></div>
+      <div class="rstep now"><span class="status st-test">Now</span><h3>Test &amp; release</h3><p>Early test: <a href="#try">web demo</a>, <a href="https://huggingface.co/spaces/muyleanging/Sota-ASR-Demo" target="_blank" rel="noopener">Space</a> and <a href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX" target="_blank" rel="noopener">model</a> are live. Next: phone, noise and Khmer–English tests.</p></div>
       <div class="rstep"><span class="status st-soon">Later</span><h3>In the apps</h3><p>Voice typing in the Akkhara keyboard, on phone and computer, offline.</p></div>
     </div>
     <div class="family">
@@ -682,7 +682,7 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
 <footer>
   <div class="wrap">
     <div>© 2026 Ing Muyleang · Sota <span class="km">សោតៈ</span></div>
-    <div><a href="https://muyleanging.github.io/akkhara-web/">Akkhara</a> · <a href="https://muyleanging.github.io/chakkhu-web/">Chakkhu</a> · <a href="https://github.com/MuyleangIng">GitHub</a> · <a href="https://huggingface.co/INGMUYLEANG">Hugging Face</a></div>
+    <div><a href="https://muyleanging.github.io/akkhara-web/">Akkhara</a> · <a href="https://muyleanging.github.io/chakkhu-web/">Chakkhu</a> · <a href="https://github.com/MuyleangIng">GitHub</a> · <a href="https://huggingface.co/muyleanging">Hugging Face</a></div>
   </div>
 </footer>
 
