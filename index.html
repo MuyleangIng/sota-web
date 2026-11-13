@@ -608,12 +608,17 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
       <div class="tscroll"><table class="btab">
         <tr><th>Model</th><th class="sz">Size</th><th>All</th><th>nxkmer</th><th>OpenSLR42</th></tr>
         <tr class="me"><td><b>Sota</b><small>from scratch · beam 5</small></td><td class="sz">26M · 33 MB int8</td><td><b>3.40%</b></td><td><b>3.25%</b></td><td>5.20%</td></tr>
+        <tr><td><b>Sota v2</b><small>+ 224 h harder and open data · beam 5</small></td><td class="sz">26M · 33 MB int8</td><td>4.26%</td><td>4.07%</td><td>6.61%</td></tr>
         <tr><td><b>Sota v3</b><small>+ ≈1,060 h real speech · beam 5 · <a href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX/tree/main/v3" target="_blank" rel="noopener">v3/</a></small></td><td class="sz">26M · 33 MB int8</td><td>4.13%</td><td>3.95%</td><td>6.31%</td></tr>
         <tr><td>Qwen3-ASR-0.6B-Khmer<small>fine-tuned Qwen3-ASR</small></td><td class="sz">0.6B</td><td>13.20%</td><td>13.34%</td><td>11.41%</td></tr>
         <tr><td>whisper-small-khmer-v2<small>fine-tuned Whisper small</small></td><td class="sz">≈244M</td><td>18.57%</td><td>19.72%</td><td><b>4.61%</b>&nbsp;†</td></tr>
       </table></div>
       <p class="meta" style="margin:10px 0 0">† Whisper-small-khmer was trained on OpenSLR42, so it may have heard these sentences before.
-        Sota with fast CTC decoding (no beam): 3.62% all. <b>Sota v3</b> (2026-11-14) is better on voices it has never heard: <a href="https://huggingface.co/datasets/google/fleurs" target="_blank" rel="noopener">FLEURS</a> Khmer test 8.66% vs 9.65% for v1, but slightly worse on this test set, so v1 stays the main model. Clips with English words: only 4 in this test set, too few to score.</p>
+        Sota with fast CTC decoding (no beam): 3.62% all. </p>
+      <p class="meta" style="margin:8px 0 0"><b>What changed in each version</b> (<a href="https://huggingface.co/datasets/google/fleurs" target="_blank" rel="noopener">FLEURS</a> Khmer test = voices never heard, CTC greedy):<br>
+        <b>v1</b> (2026-11-11): 925 h, real NXKMER / OpenSLR speech + VoxPocket synthetic speech · FLEURS 9.65%<br>
+        <b>v2</b> (2026-11-12): + 224 h harder and open data (LibriSpeech, FLEURS train, conversations, hard cases) · FLEURS 10.82%<br>
+        <b>v3</b> (2026-11-14): + ≈1,060 h real read Khmer speech (Digital Divide Data) · FLEURS <b>8.81%</b>, ≈9% fewer errors than v1 on new voices. v1 is still best on this test set; the demo uses v3 by default. Clips with English words: only 4 in this test set, too few to score.</p>
     </div>
     <p class="meta" style="margin-top:12px">Fair-play notes: these are clean recordings from the same sources Sota trained on (different speakers), so they favour Sota.
       Whisper-small-khmer was trained on OpenSLR42, which is part of this test set. Phone calls, noise and Khmer–English mixing are not tested yet.</p>
