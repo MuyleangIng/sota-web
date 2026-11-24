@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sota · Khmer speech recognition</title>
-<meta name="description" content="Sota (សោតៈ, ear) is a small Khmer + English speech recognition model by Ing Muyleang: in development: online demo, first benchmark results, architecture, data and roadmap.">
+<meta name="description" content="Sota (សោតៈ, ear) is a small Khmer + English speech recognition model by Ing Muyleang: in development: online demo, benchmark results on five test sets, architecture, data and roadmap.">
 <meta property="og:title" content="Sota · Khmer speech recognition">
-<meta property="og:description" content="A small model that turns Khmer and English speech into text, offline on your phone. Early test model: try it live.">
+<meta property="og:description" content="A small model that turns Khmer and English speech into text, offline on your phone. Test model Sota v4b: try it live.">
 <meta property="og:image" content="assets/logo.png">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -451,7 +451,7 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
   <a href="#try"><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg>Try Sota</a>
   <a href="#why"><svg class="ic" aria-hidden="true"><use href="#i-languages"/></svg>Why Khmer speech is hard</a>
   <a href="#architecture"><svg class="ic" aria-hidden="true"><use href="#i-cpu"/></svg>Architecture<small>3 figures</small></a>
-  <a href="#report"><svg class="ic" aria-hidden="true"><use href="#i-gauge"/></svg>First results</a>
+  <a href="#report"><svg class="ic" aria-hidden="true"><use href="#i-gauge"/></svg>Results</a>
   <a href="#data"><svg class="ic" aria-hidden="true"><use href="#i-database"/></svg>Data</a>
   <a href="#roadmap"><svg class="ic" aria-hidden="true"><use href="#i-flag"/></svg>Roadmap</a>
   <a href="#cite"><svg class="ic" aria-hidden="true"><use href="#i-quote"/></svg>Citation &amp; data credits</a>
@@ -459,7 +459,8 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
   <div class="grp">Online</div>
   <a href="https://muyleanging.github.io/chakkhu-web/" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-scan-eye"/></svg>Chakkhu OCR<svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
   <a href="https://muyleanging.github.io/akkhara-web/" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-keyboard"/></svg>Akkhara keyboard<svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
-  <a href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Sota model<small>download</small><svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
+  <a href="https://sota-studio.muyleanging.com" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg>Sota Studio<small>subtitles</small><svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
+  <a href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-26M-ONNX" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Sota model<small>download</small><svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
   <a href="https://huggingface.co/muyleanging" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Hugging Face<svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
   <a href="https://github.com/MuyleangIng" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-github"/></svg>GitHub<svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
 </div>
@@ -476,7 +477,7 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
 <header class="hero" id="top">
   <div class="wrap">
     <div>
-      <span class="pill">● In development · first test model</span>
+      <span class="pill">● In development · test model v4b</span>
       <h1>Speak Khmer.<br>Get the <span class="km">អក្សរ</span>.</h1>
       <p class="lead">Sota (<span class="km">សោតៈ</span>, "ear") turns Khmer and English speech into text you can copy:
         voice notes, meetings, lectures and phone calls. Small enough to run on your phone, without internet, so your voice never leaves the device.</p>
@@ -506,15 +507,15 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
   <div class="wrap">
     <div class="eyebrow">Try it</div>
     <h2>Try Sota on the demo page</h2>
-    <p class="sub">Record yourself or upload an audio file on the Hugging Face demo. It opens in a new tab.</p>
+    <p class="sub">Record yourself or upload an audio file on the Hugging Face demo, or make subtitles in Sota Studio. Both open in a new tab.</p>
     <div class="card tryc devnote">
       <h3>Still in development</h3>
-      <p>This is Sota's <b>first training run</b>. It is a small model (≈26M parameters), trained mostly on clean, read Khmer speech.
-        It works best on clear speech from one speaker. Noisy audio, phone calls and Khmer–English mixed speech are not trained or tested yet, so expect more mistakes there.
-        The next version adds more real speech, noise and English.</p>
-      <div class="cta" style="margin-top:14px">
+      <p>The demo uses <b>Sota v4b</b> (2026-11-24) by default, and you can switch to v1 or compare both. It is a small model (≈26M parameters), trained on 1,574 hours of speech.
+        It works best on clear speech from one speaker. Phone calls and noisy audio are not tested yet, and Khmer–English mixed speech still has more mistakes (14% CER), so expect errors there.</p>
+      <div class="cta links" style="margin-top:14px">
         <a class="btn btn-primary" href="https://huggingface.co/spaces/muyleanging/Sota-ASR-Demo" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg>Open the demo<svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
-        <a class="btn btn-ghost" href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Model on Hugging Face</a>
+        <a class="btn btn-ghost" href="https://sota-studio.muyleanging.com" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-audio"/></svg>Sota Studio<svg class="ic" aria-hidden="true"><use href="#i-external-link"/></svg></a>
+        <a class="btn btn-ghost" href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-26M-ONNX" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Model on Hugging Face</a>
       </div>
     </div>
   </div>
@@ -584,53 +585,59 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
 
 <section id="report" class="alt">
   <div class="wrap">
-    <div class="eyebrow">Benchmark · first results</div>
-    <h2>First results</h2>
-    <p class="sub">We tested Sota and the best free Khmer speech models on the same <b>12 hours</b> of held-out recordings
-      (6,513 clips, 16 speakers never used in training), with the same rules. Lower CER is better.</p>
+    <div class="eyebrow">Benchmark · Sota v4b</div>
+    <h2>Results</h2>
+    <p class="sub">We tested Sota and the best free Khmer speech models on five test sets, with the same rules: our own <b>12 hours</b> of held-out recordings
+      (6,513 clips, 16 speakers never used in training), FLEURS Khmer, DDD, Khmer + English mixed speech and English. Lower is better.</p>
     <div class="card"><div class="stats">
-      <div class="stat"><b style="color:var(--green)">3.4%</b><span>Sota (26M) CER</span></div>
-      <div class="stat"><b>13.2%</b><span>Qwen3-ASR-0.6B-Khmer CER</span></div>
-      <div class="stat"><b>18.6%</b><span>Whisper-small-khmer CER</span></div>
+      <div class="stat"><b style="color:var(--green)">3.3%</b><span>Sota v4b CER, our test set</span></div>
+      <div class="stat"><b style="color:var(--green)">7.8%</b><span>Sota v4b CER, FLEURS (new voices)</span></div>
+      <div class="stat"><b>14.2%</b><span>Qwen3-ASR-0.6B-Khmer CER, FLEURS</span></div>
       <div class="stat"><b>23×</b><span>Sota is smaller than Qwen3-ASR</span></div>
     </div></div>
     <div class="card bench" id="bench">
-      <h3 style="margin:0 0 4px">Character error rate by model (lower is better)</h3>
-      <div class="bench-tabs" role="group" aria-label="Test subset">
-        <button type="button" data-k="all" aria-pressed="true">All 12 h · 6,513 clips</button>
-        <button type="button" data-k="nx" aria-pressed="false">nxkmer · 5,508 clips</button>
-        <button type="button" data-k="os" aria-pressed="false">OpenSLR42 · 1,005 clips</button>
+      <h3 style="margin:0 0 4px">Error rate by model (lower is better)</h3>
+      <div class="bench-tabs" role="group" aria-label="Test set">
+        <button type="button" data-k="ours" aria-pressed="true">Our test set · 6,513 clips</button>
+        <button type="button" data-k="fleurs" aria-pressed="false">FLEURS · 655</button>
+        <button type="button" data-k="ddd" aria-pressed="false">DDD · 32</button>
+        <button type="button" data-k="mix" aria-pressed="false">Khmer + English · 88</button>
+        <button type="button" data-k="en" aria-pressed="false">English · 2,620 (WER)</button>
       </div>
       <div id="benchBars"></div>
-      <div class="bench-axis" aria-hidden="true"><span></span><div><span>0%</span><span>10%</span><span>20%</span></div><span></span></div>
+      <div class="bench-axis" aria-hidden="true"><span></span><div id="benchAxis"><span>0%</span><span>10%</span><span>20%</span></div><span></span></div>
       <div class="tscroll"><table class="btab">
-        <tr><th>Model</th><th class="sz">Size</th><th>All</th><th>nxkmer</th><th>OpenSLR42</th></tr>
-        <tr class="me"><td><b>Sota</b><small>from scratch · beam 5</small></td><td class="sz">26M · 33 MB int8</td><td><b>3.40%</b></td><td><b>3.25%</b></td><td>5.20%</td></tr>
-        <tr><td><b>Sota v2</b><small>+ 224 h harder and open data · beam 5</small></td><td class="sz">26M · 33 MB int8</td><td>4.26%</td><td>4.07%</td><td>6.61%</td></tr>
-        <tr><td><b>Sota v3</b><small>+ ≈1,060 h real speech · beam 5 · <a href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX/tree/main/v3" target="_blank" rel="noopener">v3/</a></small></td><td class="sz">26M · 33 MB int8</td><td>4.13%</td><td>3.95%</td><td>6.31%</td></tr>
-        <tr><td>Qwen3-ASR-0.6B-Khmer<small>fine-tuned Qwen3-ASR</small></td><td class="sz">0.6B</td><td>13.20%</td><td>13.34%</td><td>11.41%</td></tr>
-        <tr><td>whisper-small-khmer-v2<small>fine-tuned Whisper small</small></td><td class="sz">≈244M</td><td>18.57%</td><td>19.72%</td><td><b>4.61%</b>&nbsp;†</td></tr>
+        <tr><th>Model</th><th class="sz">Size</th><th>Our test set<br>CER</th><th>FLEURS<br>CER</th><th>DDD<br>CER</th><th>Khmer + English<br>CER</th><th>English<br>WER</th></tr>
+        <tr class="me"><td><b>Sota v4b</b><small>main model · 2026-11-24 · beam 5</small></td><td class="sz">26M · 33 MB int8</td><td>3.33%</td><td><b>7.81%</b></td><td><b>2.60%</b></td><td><b>14.02%</b></td><td>20.45%</td></tr>
+        <tr><td><b>Sota v1</b><small>2026-11-11 · beam 5 · <a href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-26M-ONNX/tree/main/v1" target="_blank" rel="noopener">v1/</a></small></td><td class="sz">26M · 33 MB int8</td><td><b>3.18%</b></td><td>8.64%</td><td>5.10%</td><td>15.38%</td><td>37.67%</td></tr>
+        <tr><td>Sota v4<small>previous main model, removed · beam 5</small></td><td class="sz">26M · 33 MB int8</td><td>4.01%</td><td>9.33%</td><td>3.18%</td><td>15.37%</td><td>31.28%</td></tr>
+        <tr><td>Qwen3-ASR-0.6B-Khmer<small>fine-tuned Qwen3-ASR</small></td><td class="sz">0.6B</td><td>12.12%</td><td>14.18%</td><td>3.83%</td><td>22.82%</td><td><b>8.68%</b></td></tr>
+        <tr><td>whisper-small-khmer-v2<small>fine-tuned Whisper small</small></td><td class="sz">≈244M</td><td>17.98%</td><td>27.29%</td><td>18.18%</td><td>34.54%</td><td>205.72%&nbsp;†</td></tr>
       </table></div>
-      <p class="meta" style="margin:10px 0 0">† Whisper-small-khmer was trained on OpenSLR42, so it may have heard these sentences before.
-        Sota with fast CTC decoding (no beam): 3.62% all. </p>
-      <p class="meta" style="margin:8px 0 0"><b>What changed in each version</b> (<a href="https://huggingface.co/datasets/google/fleurs" target="_blank" rel="noopener">FLEURS</a> Khmer test = voices never heard, CTC greedy):<br>
-        <b>v1</b> (2026-11-11): 925 h, real NXKMER / OpenSLR speech + VoxPocket synthetic speech · FLEURS 9.65%<br>
-        <b>v2</b> (2026-11-12): + 224 h harder and open data (LibriSpeech, FLEURS train, conversations, hard cases) · FLEURS 10.82%<br>
-        <b>v3</b> (2026-11-14): + ≈1,060 h real read Khmer speech (Digital Divide Data) · FLEURS <b>8.81%</b>, ≈9% fewer errors than v1 on new voices. v1 is still best on this test set; the demo uses v3 by default. Clips with English words: only 4 in this test set, too few to score.</p>
+      <p class="meta" style="margin:10px 0 0">Test sets: our own 16 unseen speakers (6,513 clips), <a href="https://huggingface.co/datasets/google/fleurs" target="_blank" rel="noopener">FLEURS</a> Khmer test (655 clips, voices never heard),
+        DDD (32 clips, a rough check only), Khmer + English mixed speech (88 clips) and English <a href="https://huggingface.co/datasets/openslr/librispeech_asr" target="_blank" rel="noopener">LibriSpeech</a> test-clean (2,620 clips, scored by word error rate).
+        † A WER above 100% means the model wrote more wrong words than the clip has words.</p>
+      <p class="meta" style="margin:8px 0 0"><b>Sota v4b</b> (2026-11-24): same size as v1, trained on <a href="https://huggingface.co/datasets/muyleanging/Sota-ASR-Khmer-Data" target="_blank" rel="noopener">Sota-ASR-Khmer-Data</a>, 1,574 h (758 h real speech), with fixed labels.
+        The decoder first learned from 886M tokens of Khmer text. 110,000 steps on 3 × RTX 4090 (≈55,000 h of audio heard); the weights are the average of steps 102k–110k.
+        The int8 ONNX file matches PyTorch (beam 2.88% vs 2.91% on 300 clips). New in beam search: a "skip check" keeps the CTC draft when the decoder skips speech.</p>
+      <p class="meta" style="margin:8px 0 0"><b>Which version to use:</b> v4b is the best Sota on FLEURS, DDD, mixed speech and English; v1 is still a little better on our own clean read test set.
+        The demo uses v4b by default, with v1 as an option. Older versions: v1 (2026-11-11, 925 h) is kept in the <a href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-26M-ONNX/tree/main/v1" target="_blank" rel="noopener">v1/</a> folder;
+        v2 (2026-11-12, + 224 h harder and open data), v3 (2026-11-14, + ≈1,060 h real read Khmer speech) and v4 were replaced and their files removed.</p>
     </div>
-    <p class="meta" style="margin-top:12px">Fair-play notes: these are clean recordings from the same sources Sota trained on (different speakers), so they favour Sota.
-      Whisper-small-khmer was trained on OpenSLR42, which is part of this test set. Phone calls, noise and Khmer–English mixing are not tested yet.</p>
+    <p class="meta" style="margin-top:12px">Fair-play notes: our own test set has clean recordings from the same sources Sota trained on (different speakers), so it favours Sota; FLEURS is a fairer test.
+      Whisper-small-khmer was trained on OpenSLR42, which is part of our test set. DDD has only 32 clips, so treat it as rough. Phone calls and noise are not tested yet.</p>
     <div class="cta links" style="margin-top:14px">
-      <a class="btn btn-primary btn-sm" href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Model card &amp; downloads</a>
+      <a class="btn btn-primary btn-sm" href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-26M-ONNX" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Model card &amp; downloads</a>
       <a class="btn btn-ghost btn-sm" href="https://huggingface.co/spaces/muyleanging/Sota-ASR-Demo" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg>Try the demo</a>
+      <a class="btn btn-ghost btn-sm" href="https://sota-studio.muyleanging.com" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-audio"/></svg>Sota Studio</a>
       <a class="btn btn-ghost btn-sm" href="https://huggingface.co/datasets/muyleanging/Sota-ASR-Khmer-Data-Preview" target="_blank" rel="noopener"><svg class="ic ib" aria-hidden="true"><use href="#b-huggingface"/></svg>Data preview</a>
     </div>
-    <p class="meta" style="margin-top:10px">Training data for the next version (2026-11-19): 1,593 h, 947,571 clips, ≈18,222 voices, 16 kHz, public, CC BY-SA 4.0: <a href="https://huggingface.co/datasets/muyleanging/Sota-ASR-Khmer-Data" target="_blank" rel="noopener">Sota-ASR-Khmer-Data</a> (please credit and cite).</p>
+    <p class="meta" style="margin-top:10px">Training data, public since 2026-11-19: 1,593 h, 947,571 clips, ≈18,222 voices, 16 kHz, public, CC BY-SA 4.0: <a href="https://huggingface.co/datasets/muyleanging/Sota-ASR-Khmer-Data" target="_blank" rel="noopener">Sota-ASR-Khmer-Data</a> (please credit and cite).</p>
     <div class="grid g3" style="margin-top:18px">
       <div class="card"><h3>What we compare</h3><p><a href="https://huggingface.co/seanghay/Qwen3-ASR-0.6B-Khmer" target="_blank" rel="noopener">Qwen3-ASR-0.6B-Khmer</a> and
         <a href="https://huggingface.co/seanghay/whisper-small-khmer-v2" target="_blank" rel="noopener">whisper-small-khmer-v2</a>, the strongest open Khmer models, run on CPU like Sota.</p></div>
-      <div class="card"><h3>On which audio</h3><p>Now: 16 speakers held out from training (clean read and spoken Khmer). Next: harder real-life clips (phone calls, noise and Khmer–English mixing), scored separately.</p></div>
-      <div class="card"><h3>How we score</h3><p><b>CER</b> = wrong, missing or extra characters ÷ characters in the right answer. Spaces and punctuation are removed first. Same clips and rules for every model.</p></div>
+      <div class="card"><h3>On which audio</h3><p>16 speakers held out from training, FLEURS Khmer, DDD, Khmer + English mixed speech and English LibriSpeech, each scored separately. Next: phone calls and noise.</p></div>
+      <div class="card"><h3>How we score</h3><p><b>CER</b> = wrong, missing or extra characters ÷ characters in the right answer. Spaces and punctuation are removed first, and spellings that sound the same count as equal. English uses <b>WER</b> (words). Beam 5, same clips and rules for every model.</p></div>
     </div>
   </div>
 </section>
@@ -644,17 +651,21 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
       <div class="card">
         <h3>Training</h3>
         <table class="cmp data">
-          <tr><td><b>Real Khmer speech, ≈237 hours</b><small><a href="#cite">NXKMER TTS 450</a> (38 speakers) and <a href="#cite">OpenSLR 42</a> (Google); 16 kHz mono, text normalized, split by speaker; dev and test come only from here</small></td><td>CC BY / BY-SA</td></tr>
-          <tr><td><b>Synthetic speech, ≈610 hours</b><small>made by VoxPocket TTS (VoxCPM2): designed voices and voices cloned from <a href="#cite">open Khmer speech sets</a>, styles and Khmer–English sentences; at most half of each epoch</small></td><td>own</td></tr>
+          <tr><td><b>Sota-ASR-Khmer-Data, 1,574 hours (v4b)</b><small><a href="https://huggingface.co/datasets/muyleanging/Sota-ASR-Khmer-Data" target="_blank" rel="noopener">public set</a>, 758 h of it real speech; labels fixed; 16 kHz mono, text normalized, split by speaker</small></td><td>CC BY-SA</td></tr>
+          <tr><td><b>Real Khmer speech</b><small><a href="#cite">NXKMER TTS 450</a> (38 speakers), <a href="#cite">OpenSLR 42</a> (Google) and other <a href="#cite">open Khmer speech sets</a>; our own dev and test speakers come from NXKMER and OpenSLR 42</small></td><td>CC BY / BY-SA</td></tr>
+          <tr><td><b>Synthetic speech</b><small>made by VoxPocket TTS (VoxCPM2): designed voices and voices cloned from <a href="#cite">open Khmer speech sets</a>, styles and Khmer–English sentences</small></td><td>own</td></tr>
           <tr><td><b>Augmentation</b><small>SpecAugment masks, speed 0.9 / 1.0 / 1.1, background noise, room echo, phone-call audio</small></td><td>own</td></tr>
-          <tr><td><b>Khmer text for the decoder</b><small>the same sentences Chakkhu learns from</small></td><td>own</td></tr>
+          <tr><td><b>Khmer text for the decoder</b><small>886M tokens, learned before the audio; the same sentences Chakkhu learns from</small></td><td>own</td></tr>
         </table>
       </div>
       <div class="card">
-        <h3>Testing (never trained on)</h3>
+        <h3>Testing</h3>
         <table class="cmp data">
-          <tr><td><b>Held-out speakers</b><small>from the real speech, never seen in training (not even as cloned voices)</small></td><td>own</td></tr>
-          <tr><td><b>Real-life clips</b><small>phone calls, street noise, Khmer + English (to collect)</small></td><td>own</td></tr>
+          <tr><td><b>Held-out speakers</b><small>6,513 clips from 16 speakers never seen in training (not even as cloned voices)</small></td><td>own</td></tr>
+          <tr><td><b>FLEURS Khmer test</b><small>655 clips, voices never heard (Google)</small></td><td>CC BY 4.0</td></tr>
+          <tr><td><b>DDD and Khmer + English</b><small>32 DDD clips (rough check) and 88 mixed Khmer–English clips</small></td><td>own</td></tr>
+          <tr><td><b>LibriSpeech test-clean</b><small>2,620 English clips, scored by word error rate</small></td><td>CC BY 4.0</td></tr>
+          <tr><td><b>Real-life clips</b><small>phone calls, street noise (to collect)</small></td><td>own</td></tr>
           <tr><td><b>khmer-asr-compare-eval</b><small>287 Khmer and code-switched clips on Hugging Face (gated)</small></td><td>checking</td></tr>
         </table>
       </div>
@@ -671,9 +682,9 @@ details.tbl th:first-child,details.tbl td:first-child{text-align:left}
       <div class="rstep done"><span class="status st-ok">Done</span><h3>Name &amp; design</h3><p>Sota <span class="km">សោតៈ</span>, the ≈26M hybrid design and three architecture figures.</p></div>
       <div class="rstep done"><span class="status st-ok">Done</span><h3>Cluster tokenizer</h3><p>3,402 Khmer cluster tokens, shared with Chakkhu.</p></div>
       <div class="rstep done"><span class="status st-ok">Done</span><h3>Prepare the audio</h3><p>≈850 h (≈237 h real): resampled, text cleaned, split by speaker, cloned voices and repeated sentences removed.</p></div>
-      <div class="rstep done"><span class="status st-ok">Done</span><h3>Baseline report</h3><p>Qwen3-ASR-Khmer 13.2% and Whisper-small-khmer 18.6% CER on the same 12 h test set.</p></div>
-      <div class="rstep done"><span class="status st-ok">Done</span><h3>Train Sota</h3><p>Decoder learned Khmer text first, then a small test run, then the full run: 100k steps on one GPU. Test CER 3.4%.</p></div>
-      <div class="rstep now"><span class="status st-test">Now</span><h3>Test &amp; release</h3><p>Early test: <a href="https://huggingface.co/spaces/muyleanging/Sota-ASR-Demo" target="_blank" rel="noopener">Space</a> and <a href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-ONNX" target="_blank" rel="noopener">model</a> are live. Next: phone, noise and Khmer–English tests.</p></div>
+      <div class="rstep done"><span class="status st-ok">Done</span><h3>Baseline report</h3><p>Qwen3-ASR-Khmer 12.1% and Whisper-small-khmer 18.0% CER on the same 12 h test set (current scoring).</p></div>
+      <div class="rstep done"><span class="status st-ok">Done</span><h3>Train Sota</h3><p>v1 (2026-11-11): 100k steps on one GPU. v4b (2026-11-24): 1,574 h, 110k steps on 3 GPUs. Test CER 3.3%, FLEURS 7.8%.</p></div>
+      <div class="rstep now"><span class="status st-test">Now</span><h3>Test &amp; release</h3><p>v4b is live: <a href="https://huggingface.co/spaces/muyleanging/Sota-ASR-Demo" target="_blank" rel="noopener">Space</a>, <a href="https://huggingface.co/muyleanging/Sota-ASR-Khmer-26M-ONNX" target="_blank" rel="noopener">model</a> and <a href="https://sota-studio.muyleanging.com" target="_blank" rel="noopener">Sota Studio</a>. Next: phone and noise tests.</p></div>
       <div class="rstep"><span class="status st-soon">Later</span><h3>In the apps</h3><p>Voice typing in the Akkhara keyboard, on phone and computer, offline.</p></div>
     </div>
     <div class="family">
@@ -911,31 +922,35 @@ document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',a
 })();
 </script>
 <script>
-/* benchmark bars (measured test CER, %, same clips and scoring for every model) */
+/* benchmark bars (measured error %, beam 5, same clips and scoring for every model; English is WER) */
 (() => {
   const D = {
-    all: [3.40, 13.20, 18.57], nx: [3.25, 13.34, 19.72], os: [5.20, 11.41, 4.61],
+    ours: [3.33, 3.18, 12.12, 17.98], fleurs: [7.81, 8.64, 14.18, 27.29], ddd: [2.60, 5.10, 3.83, 18.18],
+    mix: [14.02, 15.38, 22.82, 34.54], en: [20.45, 37.67, 8.68, 205.72],
   };
-  const N = [['Sota', '26M · ours', true], ['Qwen3-ASR-0.6B-Khmer', '0.6B'], ['whisper-small-khmer-v2', '≈244M']];
-  const clips = { all: '6,513', nx: '5,508', os: '1,005' }, MAX = 20;
-  const box = document.getElementById('benchBars');
+  const N = [['Sota v4b', '26M · main', true], ['Sota v1', '26M'], ['Qwen3-ASR-0.6B-Khmer', '0.6B'], ['whisper-small-khmer-v2', '≈244M']];
+  const clips = { ours: '6,513', fleurs: '655', ddd: '32', mix: '88', en: '2,620' };
+  const MAX = { ours: 20, fleurs: 30, ddd: 20, mix: 40, en: 60 };
+  const box = document.getElementById('benchBars'), axis = document.getElementById('benchAxis');
   if (!box) return;
   box.innerHTML = N.map(([n, sz, me]) => `<div class="brow${me ? ' me' : ''}" tabindex="0">
       <div class="nm">${n}<small>${sz}</small></div><div class="btrack"><div class="bfill" style="width:0"></div></div>
       <div class="val"></div><div class="tip" role="tooltip"></div></div>`).join('');
   const rows = [...box.children];
   function show(k) {
+    const m = MAX[k], unit = k === 'en' ? 'words' : 'characters';
+    if (axis) axis.innerHTML = [0, m / 2, m].map(x => `<span>${x}%</span>`).join('');
     D[k].forEach((v, i) => {
       const r = rows[i];
-      r.querySelector('.bfill').style.width = Math.min(100, 100 * v / MAX) + '%';
+      r.querySelector('.bfill').style.width = Math.min(100, 100 * v / m) + '%';
       r.querySelector('.val').textContent = v.toFixed(1) + '%';
-      r.querySelector('.tip').textContent = `${N[i][0]}: ${v.toFixed(2)}% of characters wrong on ${clips[k]} clips`;
+      r.querySelector('.tip').textContent = `${N[i][0]}: ${v.toFixed(2)}% of ${unit} wrong on ${clips[k]} clips`;
       r.setAttribute('aria-label', r.querySelector('.tip').textContent);
     });
     document.querySelectorAll('#bench .bench-tabs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.k === k));
   }
   document.querySelectorAll('#bench .bench-tabs button').forEach(b => b.addEventListener('click', () => show(b.dataset.k)));
-  requestAnimationFrame(() => show('all'));
+  requestAnimationFrame(() => show('ours'));
 })();
 </script>
 </body>
